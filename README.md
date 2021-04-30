@@ -24,6 +24,20 @@ Instalar as dependências:
 pipenv install
 ```
 
+**Banco de Dados**
+
+Criar models da aplicação:
+
+```
+python3 manage.py makemigrations
+```
+
+Executar ações pendentes do banco:
+
+```
+python3 manage.py migrate
+```
+
 **Execução**
 
 Rodar aplicação:  
