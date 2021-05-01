@@ -1,6 +1,15 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.conf import settings
 
-# Create your models here.
+
+class CustomUser(AbstractUser):
+    nome = models.TextField(null=True)
+    telefone = models.TextField(null=True)
+    minicurriculo = models.TextField(null=True)
+    site = models.TextField(null=True)
+    rede_social = models.TextField(null=True)
+    eh_palestrante = models.BooleanField(null=True)
 
 
 class Event(models.Model):
@@ -8,7 +17,8 @@ class Event(models.Model):
     descricao = models.TextField()
     dataHora = models.DateTimeField(auto_now=True)
     urlSite = models.TextField()
-    autor = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    autor = models.ForeignKey(to=settings.AUTH_USER_MODEL,
+                              on_delete=models.CASCADE, related_name='CustomUser')
 
     def get_absolute_url(self):
         return reverse('event_detail')

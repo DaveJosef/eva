@@ -1,7 +1,73 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<div class="home">
 
-<p>Home</p>
+    {% if user.is_authenticated %}
+    <a class="btn btn-sm btn-primary btn-sign-up new-event" href="{% url 'event_create' %}">Novo evento <i
+            class="fas fa-plus"></i></a>
+    {% endif %}
 
+    <div class="events">
+        <div class="events-header">
+            <p>Nome</p>
+            <p>Data</p>
+            <p>Hora</p>
+            <p>Site</p>
+        </div>
+        <div class="events-box">
+            <div class="event">
+                <p>Evento x Evento x Evento x Evento x Evento x Evento x Evento x Evento x </p>
+                <p>dd/mm/aaaa</p>
+                <p>00:00h</p>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar</a>
+            </div>
+            <div class="event">
+                <p>Evento x Evento x Evento x Evento x Evento x Evento x Evento x Evento x </p>
+                <p>dd/mm/aaaa</p>
+                <p>00:00h</p>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar</a>
+            </div>
+            <div class="event">
+                <p>Evento x Evento x Evento x Evento x Evento x Evento x Evento x Evento x </p>
+                <p>dd/mm/aaaa</p>
+                <p>00:00h</p>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar</a>
+            </div>
+            <div class="event">
+                <p>Evento x Evento x Evento x Evento x Evento x Evento x Evento x Evento x </p>
+                <p>dd/mm/aaaa</p>
+                <p>00:00h</p>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar</a>
+            </div>
+            <div class="event">
+                <p>Evento x Evento x Evento x Evento x Evento x Evento x Evento x Evento x </p>
+                <p>dd/mm/aaaa</p>
+                <p>00:00h</p>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar</a>
+            </div>
+            <div class="event">
+                <p>Evento x Evento x Evento x Evento x Evento x Evento x Evento x Evento x </p>
+                <p>dd/mm/aaaa</p>
+                <p>00:00h</p>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar</a>
+            </div>
+            <div class="event">
+                <p>Evento x Evento x Evento x Evento x Evento x Evento x Evento x Evento x </p>
+                <p>dd/mm/aaaa</p>
+                <p>00:00h</p>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar</a>
+            </div>
+            {% for event in events %}
+            <a class="event" href="{% url 'event_detail' event.pk %}">
+                <p>{{ event.nome }}</p>
+                <p>{{ event.dataHora }}</p>
+                <p>{{ event.dataHora }}</p>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{{ event.urlSite }}">Acessar</a>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
 {% endblock %}
