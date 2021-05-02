@@ -1,9 +1,12 @@
 {% extends 'index.html' %}
 
+{% load static %}
+
 {% block content %}
-    <h1>Sign up</h1>
-    <form method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign up</button>
-    </form>
+<h1>Sign up</h1>
+<form method="post" class="sign-up-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+</form>
+<script src="{% static 'js/index.js' %}"></script>
 {% endblock %}

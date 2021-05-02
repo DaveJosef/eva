@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 
 from .models import Event
-from .forms import CustomUserCreationForm
 
 
 class HomePageView(ListView):
@@ -43,9 +42,3 @@ class MyEventsView(LoginRequiredMixin, ListView):
     model = Event
     template_name = 'my_events.html'
     context_object_name = 'events'
-
-
-class SignUpView(CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'signup.html'

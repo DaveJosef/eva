@@ -5,8 +5,7 @@ from .views import HomePageView,\
     EventCreateView,\
     EventUpdateView,\
     EventDeleteView,\
-    MyEventsView,\
-    SignUpView
+    MyEventsView
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
@@ -14,6 +13,5 @@ urlpatterns = [
     path('event/new/', EventCreateView.as_view(), name='event_create'),
     path('event/<int:pk>/edit/', EventUpdateView.as_view(), name='event_update'),
     path('event/<int:pk>/delete/', EventDeleteView.as_view(), name='event_delete'),
-    path('myevents/', MyEventsView.as_view(), name='my_events'),
-    path('signup/', SignUpView.as_view(), name='signup')
+    path('myevents/', MyEventsView.as_view(), name='my_events')
 ]

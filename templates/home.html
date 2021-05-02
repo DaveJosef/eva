@@ -3,7 +3,7 @@
 {% block content %}
 <div class="home">
 
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and user.eh_palestrante %}
     <a class="btn btn-sm btn-primary btn-sign-up new-event" href="{% url 'event_create' %}">Novo evento <i
             class="fas fa-plus"></i></a>
     {% endif %}

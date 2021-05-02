@@ -44,6 +44,20 @@
     border-color: #E0006C;
 }
 
+.logged-actions {
+    display: flex;
+    align-items: center;
+    color: #E0006C;
+}
+
+.logged-actions .nav-link, .logged-actions i {
+    color: #E0006C;
+}
+
+.logged-actions i {
+    font-size: 1.1rem;
+}
+
 /* Conteudo geral */
 
 article {
@@ -65,6 +79,7 @@ article {
     box-shadow: 0 0 5px gray;
     border-radius: 10px;
     overflow: hidden;
+    margin: 1rem 0;
 }
 
 .events-header {
@@ -85,6 +100,9 @@ article {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    box-shadow: 0 0 5px gray;
+    margin: .5rem 0;
+    border-radius: 10px;
 }
 
 .event p, .event a {
@@ -109,6 +127,8 @@ article {
     overflow: auto;
 }
 
-.new-event {
-    margin: 1rem auto;
+/* Sign up */
+
+.sign-up-form p:nth-child(7), .sign-up-form p:nth-child(8), .sign-up-form p:nth-child(9) {
+    display: none;
 }
