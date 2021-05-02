@@ -9,10 +9,48 @@
 }
 
 /* Detalhes do evento */
+.event-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
 .event-info {
-    background-color: black;
-    width: 200px;
-    height: 200px;
+    padding: 20px 0px 0px 0px;
+    background-color: white;
+    width: 38.20%;
+    height: 70%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.event-info h2 {
+    font-weight: bold;
+    color: #E0006C;
+    margin-bottom: 40px;
+    align-self: center;
+}
+
+.event-info h3 {
+    color: #130f40;
+}
+.event-info a {
+    width: 25%;
+}
+
+.palestrantes-list {
+    
+}
+
+.login-required {
+    align-self: center;
+    margin-top: 20px;
 }
 
 /* Barra de navegacao */

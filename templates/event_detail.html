@@ -1,7 +1,15 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <div class="event-info">
-        <h1>{{ event.nome }}</h1>
+    <div class="event-container">
+        <div class="event-info">
+            <h2>Detalhes evento</h2>
+            <h3>{{ event.nome }}</h3>
+            <p>{{ event.descricao }}</p>
+            <p>{{ event.dataHora }}</p>
+            <div class="palestrantes-list"></div>
+            <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar site</a>
+            <p class="login-required">Faça <a href="{% url 'login' %}">log in</a> para se inscrever<p>
+        </div>
     </div>
 {% endblock %}
