@@ -8,6 +8,13 @@
     box-sizing: border-box;
 }
 
+/* Detalhes do evento */
+.event-info {
+    background-color: black;
+    width: 200px;
+    height: 200px;
+}
+
 /* Barra de navegacao */
 
 #logo {
