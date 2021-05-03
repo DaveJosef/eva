@@ -13,9 +13,9 @@
                 <p class="login-required">Faça <a href="{% url 'login' %}">log in</a> para se inscrever<p>
             {% else %}
                 <div class="event-botoes">
-                <a class="btn btn-sm btn-outline-secondary btn-sign-in" href="{% url 'home' %}">Assistir</a>
+                <a class="btn btn-sm btn-outline-secondary btn-sign-in" href="{% url 'ouvinteevento_create' %}">Assistir</a>
                     {% if user.eh_palestrante %}
-                        <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Palestrar</a>
+                        <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'palestranteevento_create' %}">Palestrar</a>
                     {% endif %}
                 </div>
             {% endif %}

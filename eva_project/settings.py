@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # local apps
+    'usuarioevento.apps.UsuarioeventoConfig',
     'accounts.apps.AccountsConfig',
     'eva_app.apps.EvaAppConfig',
     # djangos apps
@@ -85,7 +86,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -127,6 +127,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # User Model
+
+EVENT_MODEL = 'eva_app.Event'
 
 AUTH_USER_MODEL = 'accounts.User'
 
