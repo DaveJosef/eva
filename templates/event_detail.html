@@ -14,7 +14,9 @@
             {% else %}
                 <div class="event-botoes">
                 <a class="btn btn-sm btn-outline-secondary btn-sign-in" href="{% url 'home' %}">Assistir</a>
-                    <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Palestrar</a>
+                    {% if user.eh_palestrante %}
+                        <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Palestrar</a>
+                    {% endif %}
                 </div>
             {% endif %}
         </div>
