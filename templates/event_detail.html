@@ -8,9 +8,14 @@
             <p>{{ event.descricao }}</p>
             <p>{{ event.dataHora }}</p>
             <div class="palestrantes-list"></div>
-            <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar site</a>
+            <a class="btn btn-sm btn-primary btn-sign-up" href="{{ event.urlSite }}">Acessar site</a>
             {% if not user.is_authenticated %}
                 <p class="login-required">Faça <a href="{% url 'login' %}">log in</a> para se inscrever<p>
+            {% else %}
+                <div class="event-botoes">
+                <a class="btn btn-sm btn-outline-secondary btn-sign-in" href="{% url 'home' %}">Assistir</a>
+                    <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Palestrar</a>
+                </div>
             {% endif %}
         </div>
     </div>

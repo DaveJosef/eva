@@ -59,12 +59,12 @@
                 <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'home' %}">Acessar</a>
             </div>
             {% for event in events %}
-            <a class="event" href="{% url 'event_detail' event.pk %}">
+            <div class="event">
                 <p>{{ event.nome }}</p>
                 <p>{{ event.dataHora }}</p>
                 <p>{{ event.dataHora }}</p>
-                <a class="btn btn-sm btn-primary btn-sign-up" href="{{ event.urlSite }}">Acessar</a>
-            </a>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'event_detail' event.pk %}">Acessar</a>
+            </div>
             {% endfor %}
         </div>
     </div>

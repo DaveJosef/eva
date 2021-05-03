@@ -53,6 +53,17 @@
     margin-top: 20px;
 }
 
+.event-botoes {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    margin: 40px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
 /* Barra de navegacao */
 
 #logo {
