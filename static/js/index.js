@@ -36,3 +36,9 @@ checkbox.addEventListener('click', (e) => {
         rede_social.removeAttribute('required');
     }
 });
+
+function pegarPKEvento() {
+    const urlParams = new URLSearchParams(location.search);
+    const PKEvento = urlParams.get('evento');
+    return PKEvento;
+}

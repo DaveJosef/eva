@@ -9,13 +9,20 @@ from .models import OuvinteEvento, PalestranteEvento
 class OuvinteEventoCreateView(LoginRequiredMixin, CreateView):
     model = OuvinteEvento
     template_name = 'inscricao_create.html'
-    context_object_name = 'inscricoes'
-    fields = '__all__'
+    fields = ['evento']
+    success_url = reverse_lazy('my_events')
+
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
 
 class PalestranteEventoCreateView(LoginRequiredMixin, CreateView):
     model = PalestranteEvento
     template_name = 'palestra_create.html'
-    context_object_name = 'palestras'
-    fields = '__all__'
+    fields = ['evento']
+    success_url = reverse_lazy('my_events')
 
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
