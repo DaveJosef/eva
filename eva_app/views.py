@@ -1,4 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from django.core.exceptions import PermissionDenied
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -42,3 +44,45 @@ class MyEventsView(LoginRequiredMixin, ListView):
     model = Event
     template_name = 'my_events.html'
     context_object_name = 'events'
+
+
+@login_required(login_url='/accounts/login/')
+def addEvento(request):
+    id_evento = request.GET.get('id')
+    dados = {}
+    if id_evento:
+        dados['evento'] = Event.objects.get(id=id_evento)
+    return render(request, 'event_create.html', dados)
+
+@login_required(login_url='/accounts/login/')
+def submitEvento(request):
+    if request.POST:
+        nome = request.POST.get('nome')
+        descricao = request.POST.get('descricao')
+        urlSite = request.POST.get('urlSite')
+        dataHora = request.POST.get('dataHora')
+        autor = request.user
+        id_evento = request.POST.get('id_evento')
+        if id_evento:
+            Event.objects.filter(id=id_evento).update(nome=nome,
+                                                     descricao=descricao,
+                                                      urlSite=urlSite)
+        else:
+            Event.objects.create(nome=nome,
+                                descricao=descricao,
+                                urlSite=urlSite,
+                                dataHora=dataHora,
+                                autor=autor)
+    return redirect('/')
+
+@login_required(login_url='/accounts/login/')
+def lista_eventos(request):
+    autor = request.user
+    evento = Event.objects.filter(autor=autor)
+    dados = {'eventos': evento}
+    return render(request, 'my_events.html', dados)
+
+@login_required(login_url='/accounts/login/') 
+def delete_evento(request, id_evento):
+    Event.objects.filter(id=id_evento).delete()
+    return redirect('/')

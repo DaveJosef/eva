@@ -4,4 +4,28 @@
 
 <p>Home</p>
 
+<h2>Novo evento</h2>
+<form action="submit" method="POST">{% csrf_token %}
+    <label>Nome</label>
+    <input type="number" name="id_evento" value="{{evento.id}}" hidden>
+    <br>
+    <input type="text" name="nome" size="50" value="{{evento.nome}}">
+    <br>
+    <label>Descrição</label>
+    <br>
+    <textarea name="descricao" rows="3" cols="52" value="">{{evento.descricao}}</textarea>
+    <br>
+    <label>Site</label>
+    <br>
+    <input type="text" name="urlSite" size="50" value="{{evento.urlSite}}">
+    <br>
+    <label>Data do evento: </label>
+    <br>
+    <input type="datetime-local" name="dataHora">
+    <br>
+    <button type="submit">Salvar</button>
+    <a href="/">
+        <button type="button">Cancelar</button>
+    </a>
+</form>
 {% endblock %}

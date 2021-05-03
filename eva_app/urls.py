@@ -1,17 +1,18 @@
 from django.urls import path
+from eva_app import views
 
 from .views import HomePageView,\
     EventDetailView,\
-    EventCreateView,\
     EventUpdateView,\
-    EventDeleteView,\
     MyEventsView
+    
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('event/<int:pk>/', EventDetailView.as_view(), name='event_detail'),
-    path('event/new/', EventCreateView.as_view(), name='event_create'),
+    path('event/addEvento/', views.addEvento),
+    path('event/addEvento/submit', views.submitEvento),
+    path('event/delete/<int:id_evento>/', views.delete_evento),
     path('event/<int:pk>/edit/', EventUpdateView.as_view(), name='event_update'),
-    path('event/<int:pk>/delete/', EventDeleteView.as_view(), name='event_delete'),
-    path('myevents/', MyEventsView.as_view(), name='my_events')
+    path('myevents/', MyEventsView.as_view(), name='my_events'),
 ]

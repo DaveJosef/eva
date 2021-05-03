@@ -4,4 +4,26 @@
 
 <p>Home</p>
 
+<div class="events">
+    <div class="events-header">
+        <p>Nome</p>
+        <p>Editar</p>
+        <p>Excluir</p>
+        <p>Data/Hora</p>
+        <p>Site</p>
+    </div>
+    <div class="events-box">
+        {% for event in events %}
+        <div class="event" href="{% url 'event_detail' event.pk %}">
+            <p>{{ event.nome }}</p>
+            <a href="/event/addEvento/?id={{event.id}}">Editar</a>
+            <a href="/event/delete/{{event.id}}">Excluir</a>
+            <p>{{ event.dataHora }}</p>
+            <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'event_detail' event.pk %}">Acessar</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</div>
 {% endblock %}
