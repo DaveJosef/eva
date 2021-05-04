@@ -17,11 +17,12 @@
         </div>
         <div class="events-box">
             {% for event in events %}
-            <div class="event" href="{% url 'event_detail' event.pk %}">
+            <div class="event">
                 <p>{{ event.nome }}</p>
                 <p>{{ event.data }}</p>
                 <p>{{ event.hora }}</p>
-                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'event_detail' event.pk %}">Acessar</a>
+                <a class="btn btn-sm btn-primary btn-sign-up"
+                    href="/event/{{ event.pk }}?evento={{ event.pk }}">Acessar</a>
             </div>
             {% endfor %}
         </div>

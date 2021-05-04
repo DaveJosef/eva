@@ -1,5 +1,7 @@
 {% extends 'index.html' %}
 
+{% load static %}
+
 {% block content %}
 <div class="event-detail">
     <div class="event-info">
@@ -7,19 +9,52 @@
         <h3>{{ event.nome }}</h3>
         <p>{{ event.descricao }}</p>
         <p>{{ event.data }} - {{ event.hora }}</p>
-        <div class="palestrantes-list"></div>
+        <div class="palestrantes-list">
+            <h4>Palestrantes</h4>
+            {% for palestrante in palestrantes %}
+            <p>{{ palestrante.usuario.nome }}</p>
+            {% endfor %}
+        </div>
+        <div class="ouvintes-list">
+            <h4>Ouvintes</h4>
+            {% for ouvinte in ouvintes %}
+            <p>{{ ouvinte.usuario.nome }}</p>
+            {% endfor %}
+        </div>
         <a class="btn btn-sm btn-primary btn-sign-up" href="{{ event.urlSite }}">Acessar site</a>
         {% if not user.is_authenticated %}
         <p class="login-required">Faça <a href="{% url 'login' %}">log in</a> para se inscrever</p>
         {% else %}
-        <div class="event-actions">
-            <div class="event-botoes">
+        <div class="event-actions" id="event-actions">
+            {% if not user in ouvintes.usuario %}
+            {% for inscricao in palestrantes %}
+            {% if user == inscricao.usuario %}
+            <div class="event-botoes" id="cancelar-inscricao-btn">
                 <a class="btn btn-sm btn-outline-secondary btn-sign-in"
-                    href="{% url 'ouvinteevento_create' %}">Assistir</a>
+                    href="/inscricao/{{ inscricao.pk }}/delete">Descrever</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% if not user in palestrantes.usuario %}
+            {% for inscricao in ouvintes %}
+            {% if user == inscricao.usuario %}
+            <div class="event-botoes" id="cancelar-inscricao-btn">
+                <a class="btn btn-sm btn-outline-secondary btn-sign-in"
+                    href="/inscricao/{{ inscricao.pk }}/delete">Descrever</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% if not user in ouvintes.usuario or not user in palestrantes.usuario %}
+            <div class="event-botoes" id="inscricao-box-btn">
+                <a class="btn btn-sm btn-outline-secondary btn-sign-in"
+                    href="/inscricao/new?evento={{ event.pk }}">Assistir</a>
                 {% if user.eh_palestrante %}
                 <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'palestranteevento_create' %}">Palestrar</a>
                 {% endif %}
             </div>
+            {% endif %}
             {% if event.autor == user %}
             <div class="event-botoes">
                 <a class="btn btn-sm btn-outline-secondary btn-sign-in"
@@ -32,5 +67,6 @@
         </div>
         {% endif %}
     </div>
+    <script src="{% static 'js/inscricao.js' %}"></script>
 </div>
 {% endblock %}

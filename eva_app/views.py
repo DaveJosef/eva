@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 
 from .models import Event
+from usuarioevento.models import OuvinteEvento, PalestranteEvento
 
 
 class HomePageView(ListView):
@@ -20,6 +21,14 @@ class EventDetailView(DetailView):
     model = Event
     template_name = 'event_detail.html'
     context_object_name = 'event'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['ouvintes'] = OuvinteEvento.objects.filter(
+            evento=Event.objects.filter(pk=self.request.GET.get('evento'))[0])
+        context['palestrantes'] = PalestranteEvento.objects.filter(
+            evento=Event.objects.filter(pk=self.request.GET.get('evento'))[0])
+        return context
 
 
 class EventCreateView(LoginRequiredMixin, CreateView):

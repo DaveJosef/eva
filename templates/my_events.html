@@ -12,7 +12,7 @@
                     <strong>{{ event.nome }}</strong>
                     <p>{{ event.hora }} - {{ event.data }}</p>
                 </div>
-                <a class="my-event-link" href="{% url 'event_detail' event.pk %}">Acessar evento</a>
+                <a class="my-event-link" href="/event/{{ event.pk }}?evento={{ event.pk }}">Acessar evento</a>
             </div>
             <div class="my-event-check"><i class="fas fa-check"></i></div>
         </div>
