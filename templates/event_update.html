@@ -2,6 +2,15 @@
 
 {% block content %}
 
-<p>Home</p>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <p>Não é possível editar a data e hora do evento</p>
+    <div class="event-botoes">
+        <a class="btn btn-sm btn-outline-secondary btn-sign-in" href="{% url 'event_detail' event.pk %}">Cancelar</a>
+        {% if user.eh_palestrante %}
+        <input class="btn btn-sm btn-primary btn-sign-up" type="submit" value="Atualizar">
+        {% endif %}
+    </div>
+</form>
 
 {% endblock %}

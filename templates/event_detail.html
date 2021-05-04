@@ -1,24 +1,36 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <div class="event-container">
-        <div class="event-info">
-            <h2>Detalhes evento</h2>
-            <h3>{{ event.nome }}</h3>
-            <p>{{ event.descricao }}</p>
-            <p>{{ event.dataHora }}</p>
-            <div class="palestrantes-list"></div>
-            <a class="btn btn-sm btn-primary btn-sign-up" href="{{ event.urlSite }}">Acessar site</a>
-            {% if not user.is_authenticated %}
-                <p class="login-required">Faça <a href="{% url 'login' %}">log in</a> para se inscrever<p>
-            {% else %}
-                <div class="event-botoes">
-                <a class="btn btn-sm btn-outline-secondary btn-sign-in" href="{% url 'ouvinteevento_create' %}">Assistir</a>
-                    {% if user.eh_palestrante %}
-                        <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'palestranteevento_create' %}">Palestrar</a>
-                    {% endif %}
-                </div>
+<div class="event-detail">
+    <div class="event-info">
+        <h2 class="page-info">Detalhes evento</h2>
+        <h3>{{ event.nome }}</h3>
+        <p>{{ event.descricao }}</p>
+        <p>{{ event.data }} - {{ event.hora }}</p>
+        <div class="palestrantes-list"></div>
+        <a class="btn btn-sm btn-primary btn-sign-up" href="{{ event.urlSite }}">Acessar site</a>
+        {% if not user.is_authenticated %}
+        <p class="login-required">Faça <a href="{% url 'login' %}">log in</a> para se inscrever</p>
+        {% else %}
+        <div class="event-actions">
+            <div class="event-botoes">
+                <a class="btn btn-sm btn-outline-secondary btn-sign-in"
+                    href="{% url 'ouvinteevento_create' %}">Assistir</a>
+                {% if user.eh_palestrante %}
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'palestranteevento_create' %}">Palestrar</a>
+                {% endif %}
+            </div>
+            {% if event.autor == user %}
+            <div class="event-botoes">
+                <a class="btn btn-sm btn-outline-secondary btn-sign-in"
+                    href="{% url 'event_update' event.pk %}">Editar</a>
+                {% if user.eh_palestrante %}
+                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'palestranteevento_create' %}">Excluir</a>
+                {% endif %}
+            </div>
             {% endif %}
         </div>
+        {% endif %}
     </div>
+</div>
 {% endblock %}

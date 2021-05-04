@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<div class="home">
+<div class="home page">
 
     {% if user.is_authenticated and user.eh_palestrante %}
     <a class="btn btn-sm btn-primary btn-sign-up new-event" href="event/addEvento/">Novo evento <i
@@ -11,14 +11,16 @@
     <div class="events">
         <div class="events-header">
             <p>Nome</p>
-            <p>Data/Hora</p>
+            <p>Data</p>
+            <p>Hora</p>
             <p>Site</p>
         </div>
         <div class="events-box">
             {% for event in events %}
             <div class="event" href="{% url 'event_detail' event.pk %}">
                 <p>{{ event.nome }}</p>
-                <p>{{ event.dataHora }}</p>
+                <p>{{ event.data }}</p>
+                <p>{{ event.hora }}</p>
                 <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'event_detail' event.pk %}">Acessar</a>
             </div>
             {% endfor %}

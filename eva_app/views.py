@@ -31,7 +31,15 @@ class EventCreateView(LoginRequiredMixin, CreateView):
 class EventUpdateView(LoginRequiredMixin, UpdateView):
     model = Event
     template_name = 'event_update.html'
-    context_object_name = 'events'
+    fields = ['nome', 'descricao', 'urlSite']
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+
+        if obj.autor != self.request.user:
+            raise PermissionDenied
+
+        return super().dispatch(request, *args, **kwargs)
 
 
 class EventDeleteView(LoginRequiredMixin, DeleteView):
@@ -54,26 +62,30 @@ def addEvento(request):
         dados['evento'] = Event.objects.get(id=id_evento)
     return render(request, 'event_create.html', dados)
 
+
 @login_required(login_url='/accounts/login/')
 def submitEvento(request):
     if request.POST:
         nome = request.POST.get('nome')
         descricao = request.POST.get('descricao')
         urlSite = request.POST.get('urlSite')
-        dataHora = request.POST.get('dataHora')
+        data = request.POST.get('data')
+        hora = request.POST.get('hora')
         autor = request.user
         id_evento = request.POST.get('id_evento')
         if id_evento:
             Event.objects.filter(id=id_evento).update(nome=nome,
-                                                     descricao=descricao,
+                                                      descricao=descricao,
                                                       urlSite=urlSite)
         else:
             Event.objects.create(nome=nome,
-                                descricao=descricao,
-                                urlSite=urlSite,
-                                dataHora=dataHora,
-                                autor=autor)
+                                 descricao=descricao,
+                                 urlSite=urlSite,
+                                 data=data,
+                                 hora=hora,
+                                 autor=autor)
     return redirect('/')
+
 
 @login_required(login_url='/accounts/login/')
 def lista_eventos(request):
@@ -82,7 +94,8 @@ def lista_eventos(request):
     dados = {'eventos': evento}
     return render(request, 'my_events.html', dados)
 
-@login_required(login_url='/accounts/login/') 
+
+@login_required(login_url='/accounts/login/')
 def delete_evento(request, id_evento):
     Event.objects.filter(id=id_evento).delete()
     return redirect('/')

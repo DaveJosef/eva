@@ -2,28 +2,22 @@
 
 {% block content %}
 
-<p>Home</p>
-
-<div class="events">
-    <div class="events-header">
-        <p>Nome</p>
-        <p>Editar</p>
-        <p>Excluir</p>
-        <p>Data/Hora</p>
-        <p>Site</p>
-    </div>
-    <div class="events-box">
+<div class="my-events page">
+    <h2 class="page-info">Meus eventos</h2>
+    <div class="my-events-box">
         {% for event in events %}
-        <div class="event" href="{% url 'event_detail' event.pk %}">
-            <p>{{ event.nome }}</p>
-            <a href="/event/addEvento/?id={{event.id}}">Editar</a>
-            <a href="/event/delete/{{event.id}}">Excluir</a>
-            <p>{{ event.dataHora }}</p>
-            <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'event_detail' event.pk %}">Acessar</a>
+        <div class="my-event">
+            <div class="my-event-info">
+                <div class="my-event-info-box">
+                    <strong>{{ event.nome }}</strong>
+                    <p>{{ event.hora }} - {{ event.data }}</p>
+                </div>
+                <a class="my-event-link" href="{% url 'event_detail' event.pk %}">Acessar evento</a>
+            </div>
+            <div class="my-event-check"><i class="fas fa-check"></i></div>
         </div>
         {% endfor %}
     </div>
 </div>
 
-</div>
 {% endblock %}

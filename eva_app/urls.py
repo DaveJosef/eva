@@ -5,7 +5,7 @@ from .views import HomePageView,\
     EventDetailView,\
     EventUpdateView,\
     MyEventsView
-    
+
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
