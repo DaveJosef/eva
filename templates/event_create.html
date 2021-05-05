@@ -1,35 +1,43 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% block content %}
 
+<head>
+    <link rel="stylesheet" href="{% static 'css/new_event.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
 <p>Home</p>
 
-<h2>Novo evento</h2>
-<form action="submit" method="POST">{% csrf_token %}
-    <label>Nome</label>
-    <input type="number" name="id_evento" value="{{evento.id}}" hidden>
-    <br>
-    <input type="text" name="nome" size="50" value="{{evento.nome}}">
-    <br>
-    <label>Descrição</label>
-    <br>
-    <textarea name="descricao" rows="3" cols="52" value="">{{evento.descricao}}</textarea>
-    <br>
-    <label>Site</label>
-    <br>
-    <input type="text" name="urlSite" size="50" value="{{evento.urlSite}}">
-    <br>
-    <label>Data do evento: </label>
-    <br>
-    <input type="date" name="data">
-    <br>
-    <label>Hora do evento: </label>
-    <br>
-    <input type="time" name="hora">
-    <br>
-    <button type="submit">Salvar</button>
-    <a href="/">
-        <button type="button">Cancelar</button>
-    </a>
-</form>
+<div class="form-style-8">
+    <form action="submit" method="POST">{% csrf_token %}
+       <h2 class="page-info">Cadastrar evento</h2>
+        <br>
+        <label>Nome</label>
+        <input type="number" name="id_evento" value="{{evento.id}}" hidden>
+        <br>
+        <input type="text" name="nome" size="50" value="{{evento.nome}}">
+        <br>
+        <label>Descrição</label>
+        <br>
+        <textarea name="descricao" rows="3" cols="52" value="">{{evento.descricao}}</textarea>
+        <br>
+        <label>Site</label>
+        <br>
+        <input type="text" name="urlSite" size="50" value="{{evento.urlSite}}">
+        <br>
+        <label>Data do evento: </label>
+        <br>
+        <input type="date" name="data">
+        <br>
+        <label>Hora do evento: </label>
+        <br>
+        <input type="time" name="hora">
+        <br>
+        <button type="submit" class="btn btn-sm btn-primary btn-sign-up">Salvar</button>
+        <a href="/">
+            <button type="button" class="btn btn-sm btn-primary btn-sign-up">Cancelar</button>
+        </a>
+    </form>
+</div>
 {% endblock %}
