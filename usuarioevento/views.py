@@ -29,7 +29,7 @@ class PalestranteEventoCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.usuario = self.request.user
         form.instance.evento = Event.objects.filter(
-            pk=self.request.GET.get('palestra'))[0]
+            pk=self.request.GET.get('evento'))[0]
         return super().form_valid(form)
 
 

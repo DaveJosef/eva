@@ -28,10 +28,10 @@
         <div class="event-actions" id="event-actions">
             {% if not user in ouvintes.usuario %}
             {% for inscricao in palestrantes %}
-            {% if user == palestra.usuario %}
+            {% if user == inscricao.usuario %}
             <div class="event-botoes" id="cancelar-inscricao-btn">
                 <a class="btn btn-sm btn-outline-secondary btn-sign-in"
-                    href="/palestra/{{ palestra.pk }}/delete">Descrever</a>
+                    href="/palestra/{{ inscricao.pk }}/delete">Descrever</a>
             </div>
             {% endif %}
             {% endfor %}
