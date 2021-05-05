@@ -2,6 +2,11 @@
 
 {% block content %}
 
-<p>Home</p>
+<div class="event-botoes" id="inscricao-box-btn">
+    <form method="post" action="">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Confirmar">
+    </form>
+</div>
 
 {% endblock %}

@@ -23,11 +23,13 @@ class OuvinteEventoCreateView(LoginRequiredMixin, CreateView):
 class PalestranteEventoCreateView(LoginRequiredMixin, CreateView):
     model = PalestranteEvento
     template_name = 'palestra_create.html'
-    fields = ['evento']
+    fields = []
     success_url = reverse_lazy('my_events')
 
     def form_valid(self, form):
         form.instance.usuario = self.request.user
+        form.instance.evento = Event.objects.filter(
+            pk=self.request.GET.get('palestra'))[0]
         return super().form_valid(form)
 
 
