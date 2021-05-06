@@ -62,6 +62,12 @@ class MyEventsView(LoginRequiredMixin, ListView):
     template_name = 'my_events.html'
     context_object_name = 'events'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['ouvintes'] = OuvinteEvento.objects.all()
+        context['palestrantes'] = PalestranteEvento.objects.all()
+        return context
+
 
 @ login_required(login_url='/accounts/login/')
 def addEvento(request):

@@ -353,6 +353,11 @@ article {
     scroll-behavior: smooth;
 }
 
+.my-event-context {
+    margin: 1rem 0;
+    color: #212529;
+}
+
 @media only screen and (min-width: 700px) {
     .my-event {
         width: 50%;

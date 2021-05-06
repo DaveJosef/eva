@@ -2,9 +2,13 @@
 
 {% block content %}
 
-<form method="post" action="">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Confirmar">
-</form>
+<h1 class="title-question">Tem certeza que não quer mais palestrar nesse evento?</h1>
+<div class="event-botoes" id="inscricao-box-btn">
+    <form method="post" action="">{% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-sm btn-primary btn-sign-up" type="submit" value="Confirmar">
+        <a class="btn btn-sm btn-outline-secondary btn-sign-in" href="{{request.META.HTTP_REFERER}}">Cancelar</a>
+    </form>
+</div>
 
 {% endblock %}

@@ -61,7 +61,7 @@
                 <a class="btn btn-sm btn-outline-secondary btn-sign-in"
                     href="{% url 'event_update' event.pk %}">Editar</a>
                 {% if user.eh_palestrante %}
-                <a class="btn btn-sm btn-primary btn-sign-up" href="{% url 'palestranteevento_create' %}">Excluir</a>
+                <a class="btn btn-sm btn-primary btn-sign-up" href="/event/delete/{{ event.pk }}">Excluir</a>
                 {% endif %}
             </div>
             {% endif %}

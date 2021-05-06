@@ -5,14 +5,43 @@
 <div class="my-events page">
     <h2 class="page-info">Meus eventos</h2>
     <div class="my-events-box">
-        {% for event in events %}
+        <p class="my-event-context" >Eventos que sou dono:</p>
+        {% for inscricao in events %}
+        {% if inscricao.autor == user %}
         <div class="my-event">
             <div class="my-event-info">
                 <div class="my-event-info-box">
-                    <strong>{{ event.nome }}</strong>
-                    <p>{{ event.hora }} - {{ event.data }}</p>
+                    <strong>{{ inscricao.nome }}</strong>
+                    <p>{{ inscricao.hora }} - {{ inscricao.data }}</p>
                 </div>
-                <a class="my-event-link" href="/event/{{ event.pk }}?evento={{ event.pk }}">Acessar evento</a>
+                <a class="my-event-link" href="/event/{{ inscricao.pk }}">Acessar evento</a>
+            </div>
+            <div class="my-event-check"><i class="fas fa-check"></i></div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <p class="my-event-context">Eventos que palestro:</p>
+        {% for inscricao in palestrantes %}
+        <div class="my-event">
+            <div class="my-event-info">
+                <div class="my-event-info-box">
+                    <strong>{{ inscricao.evento.nome }}</strong>
+                    <p>{{ inscricao.evento.hora }} - {{ inscricao.evento.data }}</p>
+                </div>
+                <a class="my-event-link" href="/event/{{ inscricao.evento.pk }}">Acessar evento</a>
+            </div>
+            <div class="my-event-check"><i class="fas fa-check"></i></div>
+        </div>
+        {% endfor %}
+        <p class="my-event-context">Eventos que assisto:</p>
+        {% for inscricao in ouvintes %}
+        <div class="my-event">
+            <div class="my-event-info">
+                <div class="my-event-info-box">
+                    <strong>{{ inscricao.evento.nome }}</strong>
+                    <p>{{ inscricao.evento.hora }} - {{ inscricao.evento.data }}</p>
+                </div>
+                <a class="my-event-link" href="/event/{{ inscricao.evento.pk }}">Acessar evento</a>
             </div>
             <div class="my-event-check"><i class="fas fa-check"></i></div>
         </div>

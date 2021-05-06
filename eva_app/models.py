@@ -13,7 +13,7 @@ class Event(models.Model):
                               on_delete=models.CASCADE, related_name='CustomUser', null=True)
 
     def get_absolute_url(self):
-        return reverse('event_detail')
+        return reverse('event_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.nome
