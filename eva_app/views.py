@@ -25,9 +25,9 @@ class EventDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['ouvintes'] = OuvinteEvento.objects.filter(
-            evento=Event.objects.filter(pk=self.request.GET.get('evento'))[0])
+            evento=Event.objects.get(pk=self.get_object()._get_pk_val()))
         context['palestrantes'] = PalestranteEvento.objects.filter(
-            evento=Event.objects.filter(pk=self.request.GET.get('evento'))[0])
+            evento=Event.objects.get(pk=self.get_object()._get_pk_val()))
         return context
 
 
@@ -63,7 +63,7 @@ class MyEventsView(LoginRequiredMixin, ListView):
     context_object_name = 'events'
 
 
-@login_required(login_url='/accounts/login/')
+@ login_required(login_url='/accounts/login/')
 def addEvento(request):
     id_evento = request.GET.get('id')
     dados = {}
@@ -72,7 +72,7 @@ def addEvento(request):
     return render(request, 'event_create.html', dados)
 
 
-@login_required(login_url='/accounts/login/')
+@ login_required(login_url='/accounts/login/')
 def submitEvento(request):
     if request.POST:
         nome = request.POST.get('nome')
@@ -96,7 +96,7 @@ def submitEvento(request):
     return redirect('/')
 
 
-@login_required(login_url='/accounts/login/')
+@ login_required(login_url='/accounts/login/')
 def lista_eventos(request):
     autor = request.user
     evento = Event.objects.filter(autor=autor)
@@ -104,7 +104,7 @@ def lista_eventos(request):
     return render(request, 'my_events.html', dados)
 
 
-@login_required(login_url='/accounts/login/')
+@ login_required(login_url='/accounts/login/')
 def delete_evento(request, id_evento):
     Event.objects.filter(id=id_evento).delete()
     return redirect('/')
