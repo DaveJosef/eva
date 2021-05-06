@@ -321,6 +321,38 @@ article {
     border-radius: 50%;
 }
 
+.event-update-form-container {
+    margin: 3rem auto;
+    padding-top: 2rem;
+    
+    height: 100%;
+    width: 65vw;
+    background-color: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+.event-update-form {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.event-update-form p {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-update-form p input, .event-update-form p textarea {
+    resize: none;
+    height: 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    scroll-behavior: smooth;
+}
+
 @media only screen and (min-width: 700px) {
     .my-event {
         width: 50%;

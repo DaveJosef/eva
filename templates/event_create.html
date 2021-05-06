@@ -13,16 +13,16 @@
     <form action="submit" method="POST">{% csrf_token %}
        <h2 class="page-info">Cadastrar evento</h2>
         <br>
-        <label>Nome</label>
+        <label>Nome:</label>
         <input type="number" name="id_evento" value="{{evento.id}}" hidden>
         <br>
         <input type="text" name="nome" size="50" value="{{evento.nome}}">
         <br>
-        <label>Descrição</label>
+        <label>Descrição:</label>
         <br>
         <textarea name="descricao" rows="3" cols="52" value="">{{evento.descricao}}</textarea>
         <br>
-        <label>Site</label>
+        <label>Site:</label>
         <br>
         <input type="text" name="urlSite" size="50" value="{{evento.urlSite}}">
         <br>
