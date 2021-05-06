@@ -10,9 +10,6 @@ let rede_social = document.getElementById('id_rede_social');
 // Setando tags para um valor inicial
 
 paragraphs[4].getElementsByTagName('label')[0].innerText = "Sou palestrante";
-site.setAttribute('required', '');
-minicurriculo.setAttribute('required', '');
-rede_social.setAttribute('required', '');
 
 // Verificar se o usuario eh um palestrante
 

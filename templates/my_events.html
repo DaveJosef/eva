@@ -22,6 +22,7 @@
         {% endfor %}
         <p class="my-event-context">Eventos que palestro:</p>
         {% for inscricao in palestrantes %}
+        {% if inscricao.usuario == user %}
         <div class="my-event">
             <div class="my-event-info">
                 <div class="my-event-info-box">
@@ -32,9 +33,11 @@
             </div>
             <div class="my-event-check"><i class="fas fa-check"></i></div>
         </div>
+        {% endif %}
         {% endfor %}
         <p class="my-event-context">Eventos que assisto:</p>
         {% for inscricao in ouvintes %}
+        {% if inscricao.usuario == user %}
         <div class="my-event">
             <div class="my-event-info">
                 <div class="my-event-info-box">
@@ -45,6 +48,7 @@
             </div>
             <div class="my-event-check"><i class="fas fa-check"></i></div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
