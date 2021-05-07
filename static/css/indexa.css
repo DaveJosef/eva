@@ -132,7 +132,7 @@ h1 {
 }
 
 .event-botoes a {
-    width: 7rem;
+    min-width: 7rem;
 }
 
 /* Barra de navegacao */

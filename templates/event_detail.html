@@ -32,7 +32,7 @@
             {% if user == inscricao.usuario %}
             <div class="event-botoes" id="cancelar-inscricao-btn">
                 <a class="btn btn-sm btn-outline-secondary btn-sign-in"
-                    href="/palestra/{{ inscricao.pk }}/delete">Descrever</a>
+                    href="/palestra/{{ inscricao.pk }}/delete">Cancelar inscrição</a>
             </div>
             {% endif %}
             {% endfor %}
@@ -42,7 +42,7 @@
             {% if user == inscricao.usuario %}
             <div class="event-botoes" id="cancelar-inscricao-btn">
                 <a class="btn btn-sm btn-outline-secondary btn-sign-in"
-                    href="/inscricao/{{ inscricao.pk }}/delete">Descrever</a>
+                    href="/inscricao/{{ inscricao.pk }}/delete">Cancelar inscrição</a>
             </div>
             {% endif %}
             {% endfor %}
