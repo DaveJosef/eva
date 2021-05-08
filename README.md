@@ -26,6 +26,12 @@ pipenv install
 
 **Banco de Dados**
 
+Criar super-usuário:
+
+```
+python3 manage.py createsuperuser
+```
+
 Criar models da aplicação:
 
 ```
